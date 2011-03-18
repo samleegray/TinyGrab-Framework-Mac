@@ -1,0 +1,437 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CE7C366A13336AD800A0440B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE7C366913336AD800A0440B /* Cocoa.framework */; };
+		CE7C367413336AD800A0440B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE7C367213336AD800A0440B /* InfoPlist.strings */; };
+		CE7C367C13336AD800A0440B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE7C366913336AD800A0440B /* Cocoa.framework */; };
+		CE7C367F13336AD800A0440B /* TinyGrab Framework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE7C366613336AD800A0440B /* TinyGrab Framework.framework */; };
+		CE7C368513336AD800A0440B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE7C368313336AD800A0440B /* InfoPlist.strings */; };
+		CE7C368813336AD800A0440B /* TinyGrab_FrameworkTests.h in Resources */ = {isa = PBXBuildFile; fileRef = CE7C368713336AD800A0440B /* TinyGrab_FrameworkTests.h */; };
+		CE7C368A13336AD800A0440B /* TinyGrab_FrameworkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7C368913336AD800A0440B /* TinyGrab_FrameworkTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CE7C367D13336AD800A0440B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE7C365C13336AD800A0440B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE7C366513336AD800A0440B;
+			remoteInfo = "TinyGrab Framework";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CE7C366613336AD800A0440B /* TinyGrab Framework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "TinyGrab Framework.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE7C366913336AD800A0440B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		CE7C366C13336AD800A0440B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		CE7C366D13336AD800A0440B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		CE7C366E13336AD800A0440B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CE7C367113336AD800A0440B /* TinyGrab Framework-Info.plist */ = {isa = PBXFileReference; path = "TinyGrab Framework-Info.plist"; sourceTree = "<group>"; };
+		CE7C367313336AD800A0440B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CE7C367513336AD800A0440B /* TinyGrab Framework-Prefix.pch */ = {isa = PBXFileReference; path = "TinyGrab Framework-Prefix.pch"; sourceTree = "<group>"; };
+		CE7C367B13336AD800A0440B /* TinyGrab FrameworkTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TinyGrab FrameworkTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE7C368213336AD800A0440B /* TinyGrab FrameworkTests-Info.plist */ = {isa = PBXFileReference; path = "TinyGrab FrameworkTests-Info.plist"; sourceTree = "<group>"; };
+		CE7C368413336AD800A0440B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CE7C368613336AD800A0440B /* TinyGrab FrameworkTests-Prefix.pch */ = {isa = PBXFileReference; path = "TinyGrab FrameworkTests-Prefix.pch"; sourceTree = "<group>"; };
+		CE7C368713336AD800A0440B /* TinyGrab_FrameworkTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinyGrab_FrameworkTests.h; sourceTree = "<group>"; };
+		CE7C368913336AD800A0440B /* TinyGrab_FrameworkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TinyGrab_FrameworkTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CE7C366213336AD800A0440B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE7C366A13336AD800A0440B /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE7C367713336AD800A0440B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE7C367C13336AD800A0440B /* Cocoa.framework in Frameworks */,
+				CE7C367F13336AD800A0440B /* TinyGrab Framework.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CE7C365A13336AD800A0440B = {
+			isa = PBXGroup;
+			children = (
+				CE7C366F13336AD800A0440B /* TinyGrab Framework */,
+				CE7C368013336AD800A0440B /* TinyGrab FrameworkTests */,
+				CE7C366813336AD800A0440B /* Frameworks */,
+				CE7C366713336AD800A0440B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CE7C366713336AD800A0440B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CE7C366613336AD800A0440B /* TinyGrab Framework.framework */,
+				CE7C367B13336AD800A0440B /* TinyGrab FrameworkTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CE7C366813336AD800A0440B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE7C366913336AD800A0440B /* Cocoa.framework */,
+				CE7C366B13336AD800A0440B /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CE7C366B13336AD800A0440B /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE7C366C13336AD800A0440B /* AppKit.framework */,
+				CE7C366D13336AD800A0440B /* CoreData.framework */,
+				CE7C366E13336AD800A0440B /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		CE7C366F13336AD800A0440B /* TinyGrab Framework */ = {
+			isa = PBXGroup;
+			children = (
+				CE7C367013336AD800A0440B /* Supporting Files */,
+			);
+			path = "TinyGrab Framework";
+			sourceTree = "<group>";
+		};
+		CE7C367013336AD800A0440B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CE7C367113336AD800A0440B /* TinyGrab Framework-Info.plist */,
+				CE7C367213336AD800A0440B /* InfoPlist.strings */,
+				CE7C367513336AD800A0440B /* TinyGrab Framework-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CE7C368013336AD800A0440B /* TinyGrab FrameworkTests */ = {
+			isa = PBXGroup;
+			children = (
+				CE7C368713336AD800A0440B /* TinyGrab_FrameworkTests.h */,
+				CE7C368913336AD800A0440B /* TinyGrab_FrameworkTests.m */,
+				CE7C368113336AD800A0440B /* Supporting Files */,
+			);
+			path = "TinyGrab FrameworkTests";
+			sourceTree = "<group>";
+		};
+		CE7C368113336AD800A0440B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CE7C368213336AD800A0440B /* TinyGrab FrameworkTests-Info.plist */,
+				CE7C368313336AD800A0440B /* InfoPlist.strings */,
+				CE7C368613336AD800A0440B /* TinyGrab FrameworkTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		CE7C366313336AD800A0440B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		CE7C366513336AD800A0440B /* TinyGrab Framework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE7C368D13336AD800A0440B /* Build configuration list for PBXNativeTarget "TinyGrab Framework" */;
+			buildPhases = (
+				CE7C366113336AD800A0440B /* Sources */,
+				CE7C366213336AD800A0440B /* Frameworks */,
+				CE7C366313336AD800A0440B /* Headers */,
+				CE7C366413336AD800A0440B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TinyGrab Framework";
+			productName = "TinyGrab Framework";
+			productReference = CE7C366613336AD800A0440B /* TinyGrab Framework.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		CE7C367A13336AD800A0440B /* TinyGrab FrameworkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE7C369013336AD800A0440B /* Build configuration list for PBXNativeTarget "TinyGrab FrameworkTests" */;
+			buildPhases = (
+				CE7C367613336AD800A0440B /* Sources */,
+				CE7C367713336AD800A0440B /* Frameworks */,
+				CE7C367813336AD800A0440B /* Resources */,
+				CE7C367913336AD800A0440B /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CE7C367E13336AD800A0440B /* PBXTargetDependency */,
+			);
+			name = "TinyGrab FrameworkTests";
+			productName = "TinyGrab FrameworkTests";
+			productReference = CE7C367B13336AD800A0440B /* TinyGrab FrameworkTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CE7C365C13336AD800A0440B /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = CE7C365F13336AD800A0440B /* Build configuration list for PBXProject "TinyGrab Framework" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CE7C365A13336AD800A0440B;
+			productRefGroup = CE7C366713336AD800A0440B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CE7C366513336AD800A0440B /* TinyGrab Framework */,
+				CE7C367A13336AD800A0440B /* TinyGrab FrameworkTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CE7C366413336AD800A0440B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE7C367413336AD800A0440B /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE7C367813336AD800A0440B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE7C368513336AD800A0440B /* InfoPlist.strings in Resources */,
+				CE7C368813336AD800A0440B /* TinyGrab_FrameworkTests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CE7C367913336AD800A0440B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CE7C366113336AD800A0440B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE7C367613336AD800A0440B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE7C368A13336AD800A0440B /* TinyGrab_FrameworkTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CE7C367E13336AD800A0440B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CE7C366513336AD800A0440B /* TinyGrab Framework */;
+			targetProxy = CE7C367D13336AD800A0440B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CE7C367213336AD800A0440B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE7C367313336AD800A0440B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		CE7C368313336AD800A0440B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE7C368413336AD800A0440B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CE7C368B13336AD800A0440B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		CE7C368C13336AD800A0440B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		CE7C368E13336AD800A0440B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TinyGrab Framework/TinyGrab Framework-Prefix.pch";
+				INFOPLIST_FILE = "TinyGrab Framework/TinyGrab Framework-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		CE7C368F13336AD800A0440B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TinyGrab Framework/TinyGrab Framework-Prefix.pch";
+				INFOPLIST_FILE = "TinyGrab Framework/TinyGrab Framework-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+		CE7C369113336AD800A0440B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TinyGrab FrameworkTests/TinyGrab FrameworkTests-Prefix.pch";
+				INFOPLIST_FILE = "TinyGrab FrameworkTests/TinyGrab FrameworkTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		CE7C369213336AD800A0440B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TinyGrab FrameworkTests/TinyGrab FrameworkTests-Prefix.pch";
+				INFOPLIST_FILE = "TinyGrab FrameworkTests/TinyGrab FrameworkTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CE7C365F13336AD800A0440B /* Build configuration list for PBXProject "TinyGrab Framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE7C368B13336AD800A0440B /* Debug */,
+				CE7C368C13336AD800A0440B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE7C368D13336AD800A0440B /* Build configuration list for PBXNativeTarget "TinyGrab Framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE7C368E13336AD800A0440B /* Debug */,
+				CE7C368F13336AD800A0440B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		CE7C369013336AD800A0440B /* Build configuration list for PBXNativeTarget "TinyGrab FrameworkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE7C369113336AD800A0440B /* Debug */,
+				CE7C369213336AD800A0440B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CE7C365C13336AD800A0440B /* Project object */;
+}
