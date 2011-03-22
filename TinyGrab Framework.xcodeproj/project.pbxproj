@@ -14,6 +14,12 @@
 		CE7C368513336AD800A0440B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE7C368313336AD800A0440B /* InfoPlist.strings */; };
 		CE7C368813336AD800A0440B /* TinyGrab_FrameworkTests.h in Resources */ = {isa = PBXBuildFile; fileRef = CE7C368713336AD800A0440B /* TinyGrab_FrameworkTests.h */; };
 		CE7C368A13336AD800A0440B /* TinyGrab_FrameworkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7C368913336AD800A0440B /* TinyGrab_FrameworkTests.m */; };
+		CE7C369B13336BC900A0440B /* TinyGrab.h in Headers */ = {isa = PBXBuildFile; fileRef = CE7C369913336BC900A0440B /* TinyGrab.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CE7C369C13336BC900A0440B /* TinyGrab.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7C369A13336BC900A0440B /* TinyGrab.m */; };
+		CE7C36A013336BD600A0440B /* HeaderParser.h in Headers */ = {isa = PBXBuildFile; fileRef = CE7C369D13336BD600A0440B /* HeaderParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CE7C36A113336BD600A0440B /* HeaderParser.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7C369E13336BD600A0440B /* HeaderParser.m */; };
+		CE7C36A213336BD600A0440B /* TinyGrabDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = CE7C369F13336BD600A0440B /* TinyGrabDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CE7C36A413336C7400A0440B /* libcurl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CE7C36A313336C7400A0440B /* libcurl.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,15 +38,21 @@
 		CE7C366C13336AD800A0440B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		CE7C366D13336AD800A0440B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		CE7C366E13336AD800A0440B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		CE7C367113336AD800A0440B /* TinyGrab Framework-Info.plist */ = {isa = PBXFileReference; path = "TinyGrab Framework-Info.plist"; sourceTree = "<group>"; };
+		CE7C367113336AD800A0440B /* TinyGrab Framework-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TinyGrab Framework-Info.plist"; sourceTree = "<group>"; };
 		CE7C367313336AD800A0440B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		CE7C367513336AD800A0440B /* TinyGrab Framework-Prefix.pch */ = {isa = PBXFileReference; path = "TinyGrab Framework-Prefix.pch"; sourceTree = "<group>"; };
+		CE7C367513336AD800A0440B /* TinyGrab Framework-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TinyGrab Framework-Prefix.pch"; sourceTree = "<group>"; };
 		CE7C367B13336AD800A0440B /* TinyGrab FrameworkTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TinyGrab FrameworkTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE7C368213336AD800A0440B /* TinyGrab FrameworkTests-Info.plist */ = {isa = PBXFileReference; path = "TinyGrab FrameworkTests-Info.plist"; sourceTree = "<group>"; };
+		CE7C368213336AD800A0440B /* TinyGrab FrameworkTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TinyGrab FrameworkTests-Info.plist"; sourceTree = "<group>"; };
 		CE7C368413336AD800A0440B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		CE7C368613336AD800A0440B /* TinyGrab FrameworkTests-Prefix.pch */ = {isa = PBXFileReference; path = "TinyGrab FrameworkTests-Prefix.pch"; sourceTree = "<group>"; };
+		CE7C368613336AD800A0440B /* TinyGrab FrameworkTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TinyGrab FrameworkTests-Prefix.pch"; sourceTree = "<group>"; };
 		CE7C368713336AD800A0440B /* TinyGrab_FrameworkTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinyGrab_FrameworkTests.h; sourceTree = "<group>"; };
 		CE7C368913336AD800A0440B /* TinyGrab_FrameworkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TinyGrab_FrameworkTests.m; sourceTree = "<group>"; };
+		CE7C369913336BC900A0440B /* TinyGrab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TinyGrab.h; sourceTree = "<group>"; };
+		CE7C369A13336BC900A0440B /* TinyGrab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TinyGrab.m; sourceTree = "<group>"; };
+		CE7C369D13336BD600A0440B /* HeaderParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderParser.h; sourceTree = "<group>"; };
+		CE7C369E13336BD600A0440B /* HeaderParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderParser.m; sourceTree = "<group>"; };
+		CE7C369F13336BD600A0440B /* TinyGrabDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TinyGrabDelegate.h; sourceTree = "<group>"; };
+		CE7C36A313336C7400A0440B /* libcurl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.dylib; path = usr/lib/libcurl.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE7C36A413336C7400A0440B /* libcurl.dylib in Frameworks */,
 				CE7C366A13336AD800A0440B /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -86,6 +99,7 @@
 		CE7C366813336AD800A0440B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE7C36A313336C7400A0440B /* libcurl.dylib */,
 				CE7C366913336AD800A0440B /* Cocoa.framework */,
 				CE7C366B13336AD800A0440B /* Other Frameworks */,
 			);
@@ -105,6 +119,11 @@
 		CE7C366F13336AD800A0440B /* TinyGrab Framework */ = {
 			isa = PBXGroup;
 			children = (
+				CE7C369913336BC900A0440B /* TinyGrab.h */,
+				CE7C369A13336BC900A0440B /* TinyGrab.m */,
+				CE7C369D13336BD600A0440B /* HeaderParser.h */,
+				CE7C369E13336BD600A0440B /* HeaderParser.m */,
+				CE7C369F13336BD600A0440B /* TinyGrabDelegate.h */,
 				CE7C367013336AD800A0440B /* Supporting Files */,
 			);
 			path = "TinyGrab Framework";
@@ -147,6 +166,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE7C369B13336BC900A0440B /* TinyGrab.h in Headers */,
+				CE7C36A013336BD600A0440B /* HeaderParser.h in Headers */,
+				CE7C36A213336BD600A0440B /* TinyGrabDelegate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,6 +276,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE7C369C13336BC900A0440B /* TinyGrab.m in Sources */,
+				CE7C36A113336BD600A0440B /* HeaderParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +347,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -340,6 +365,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TinyGrab Framework/TinyGrab Framework-Prefix.pch";
 				INFOPLIST_FILE = "TinyGrab Framework/TinyGrab Framework-Info.plist";
+				INSTALL_PATH = "@executable_path/../Frameworks/";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
 			};
@@ -358,6 +384,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TinyGrab Framework/TinyGrab Framework-Prefix.pch";
 				INFOPLIST_FILE = "TinyGrab Framework/TinyGrab Framework-Info.plist";
+				INSTALL_PATH = "@executable_path/../Frameworks/";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
 			};
@@ -422,6 +450,7 @@
 				CE7C368F13336AD800A0440B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CE7C369013336AD800A0440B /* Build configuration list for PBXNativeTarget "TinyGrab FrameworkTests" */ = {
 			isa = XCConfigurationList;
@@ -430,6 +459,7 @@
 				CE7C369213336AD800A0440B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
