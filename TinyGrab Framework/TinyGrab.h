@@ -52,22 +52,5 @@ id <TinyGrabDelegate> currentDelegate;
 
 @end
 
-
-
-/*CURL *curl;
-char *stringBuffer;
-char *headerBuffer;
-char *stringTest;
-NSString *grabURL;
-int latestRequestStatus;
-//HeaderParser *parser;
-
-void TinyGrabStart(void);
-NSDictionary *TinyGrabUploadImage(const char *fileName, const char *email, const char *password);
-NSDictionary *TinyGrabValid(const char *email, const char *password);
-const char *convertImage(const char *filePath);
-const char *makeMD5(const char *stringToMD5);
-void TinyGrabDestory(void);*/
-
 int uploadProgress(void *blah, double t, double d, double ultotal, double ulnow);
 size_t writefunc(void *ptr, size_t size, size_t nmemb, char *s);
