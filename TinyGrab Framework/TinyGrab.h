@@ -38,7 +38,6 @@ id <TinyGrabDelegate> currentDelegate;
 	char *stringBuffer;
 	char *headerBuffer;
 	NSString *grabURL;
-	int lastRequestStatus;
 	HeaderParser *parser;
     id <TinyGrabDelegate> delegate;
 }

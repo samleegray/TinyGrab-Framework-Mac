@@ -39,6 +39,7 @@ size_t writefunc(void *ptr, size_t size, size_t nmemb, char *s)
 	
 	[currentParser parseHeaderString:stringToParse];
 	
+    [stringToParse release];
 	return size*nmemb;
 }
 
@@ -216,6 +217,8 @@ size_t writefunc(void *ptr, size_t size, size_t nmemb, char *s)
 	NSMutableString *uniqueFilename = [NSMutableString stringWithFormat:@"%@.jpg", uniqueString];
 	NSString *filePath = [NSTemporaryDirectory() stringByAppendingPathComponent:uniqueFilename];
 	[data writeToURL:[NSURL fileURLWithPath:filePath] atomically:NO];
+    
+    [image release];
 	
 	return([filePath UTF8String]);
 }
