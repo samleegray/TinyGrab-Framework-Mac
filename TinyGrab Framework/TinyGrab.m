@@ -12,38 +12,42 @@
 #pragma mark -
 #pragma mark libcurl callbacks
 
-int uploadProgress(void *blah, double t, /* dltotal */ double d, /* dlnow */ double ultotal, double ulnow)
+int uploadProgress(void *s, double t, /* dltotal */ double d, /* dlnow */ double ultotal, double ulnow)
 {
+    TinyGrab *tgSelf = (TinyGrab *)s;
+    
 	int size = 100;
 	double fractionDownloaded = ulnow / ultotal;
 	int amountFull = round(fractionDownloaded * size);
 	
-	//printf("amountFull:%d\n", amountFull);
-	
-    [currentDelegate uploadProgress:amountFull];
+    if(amountFull != [tgSelf lastPercent])
+    {
+        [[tgSelf delegate] uploadProgress:amountFull];
+        [tgSelf setLastPercent:amountFull];
+    }
     
 	return 0;
 }
 
-size_t writefunc(void *ptr, size_t size, size_t nmemb, char *s)
+size_t writefunc(void *ptr, size_t size, size_t nmemb, void *s)
 {	
-	if (s == NULL) 
-	{
-		fprintf(stderr, "realloc() failed in writefunc(Cloudie.m)\n");
-		exit(1);
-	}
+    TinyGrab *tgSelf = (TinyGrab *)s;
     
     NSMutableString *stringToParse = [[NSMutableString alloc] initWithUTF8String:(const char *)ptr];
     int deleteableAmount = [stringToParse length] - nmemb;
     [stringToParse deleteCharactersInRange:NSMakeRange([stringToParse length] - deleteableAmount, deleteableAmount)];
 	
-	[currentParser parseHeaderString:stringToParse];
+	[[tgSelf parser] parseHeaderString:stringToParse];
 	
     [stringToParse release];
 	return size*nmemb;
 }
 
 @implementation TinyGrab
+
+@synthesize delegate;
+@synthesize parser;
+@synthesize lastPercent;
 
 -(id)init
 {
@@ -82,8 +86,6 @@ size_t writefunc(void *ptr, size_t size, size_t nmemb, char *s)
 -(NSDictionary *)uploadImage:(NSString *)filePathString email:(NSString *)emailString password:(NSString *)passwordString
 {
 	[parser startNewParseSet];
-	currentParser = parser;
-    currentDelegate = delegate;
 	CURLcode res2;
 	
 	const char *email = [emailString UTF8String];
@@ -128,10 +130,11 @@ size_t writefunc(void *ptr, size_t size, size_t nmemb, char *s)
 		curl_easy_setopt(curl, CURLOPT_URL, TINYGRAB_UPLOAD_URL);
 		curl_easy_setopt(curl, CURLOPT_HTTPPOST, formpost2);
 		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, writefunc);
-		curl_easy_setopt(curl, CURLOPT_WRITEDATA, &stringBuffer);
-		curl_easy_setopt(curl, CURLOPT_WRITEHEADER, &headerBuffer);
+		curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *)self);
+        curl_easy_setopt(curl, CURLOPT_HEADER, 1L);
 		curl_easy_setopt(curl, CURLOPT_NOPROGRESS, 0L);
 		curl_easy_setopt(curl, CURLOPT_PROGRESSFUNCTION, uploadProgress);
+        curl_easy_setopt(curl, CURLOPT_PROGRESSDATA, (void *)self);
 		
 		res2 = curl_easy_perform(curl);
 		
@@ -140,9 +143,6 @@ size_t writefunc(void *ptr, size_t size, size_t nmemb, char *s)
 	}
 	
 	NSDictionary *headerDictionary = [NSDictionary dictionaryWithDictionary:[parser headerDictionary]];
-	
-	currentParser = nil;
-	currentDelegate = nil;
     
 	return(headerDictionary);
 }
@@ -150,8 +150,6 @@ size_t writefunc(void *ptr, size_t size, size_t nmemb, char *s)
 -(NSDictionary *)validateUser:(NSString *)emailString password:(NSString *)passwordString
 {
 	[parser startNewParseSet];
-	currentParser = parser;
-    currentDelegate = delegate;
 	CURLcode res2;
 	
 	const char *email = [emailString UTF8String];
@@ -190,7 +188,7 @@ size_t writefunc(void *ptr, size_t size, size_t nmemb, char *s)
 		curl_easy_setopt(curl, CURLOPT_URL, TINYGRAB_VERIFY_URL);
 		curl_easy_setopt(curl, CURLOPT_HTTPPOST, formpost2);
 		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, writefunc);
-		curl_easy_setopt(curl, CURLOPT_WRITEDATA, &stringBuffer);
+		curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *)self);
 		curl_easy_setopt(curl, CURLOPT_WRITEHEADER, &headerBuffer);
 		res2 = curl_easy_perform(curl);
 		
@@ -199,9 +197,6 @@ size_t writefunc(void *ptr, size_t size, size_t nmemb, char *s)
 	}
 	
 	NSDictionary *headerDictionary = [NSDictionary dictionaryWithDictionary:[parser headerDictionary]];
-	
-	currentParser = nil;
-    currentDelegate = nil;
 	
 	return(headerDictionary);
 }

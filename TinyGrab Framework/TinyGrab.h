@@ -28,19 +28,23 @@
 #define CLOUDIE_SUCCESS 0
 #define CLOUDIE_FAIL 1
 
-HeaderParser *currentParser;
-id <TinyGrabDelegate> currentDelegate;
-
 @interface TinyGrab : NSObject
 {
+    id<TinyGrabDelegate> delegate;
+    HeaderParser *parser;
+    int lastPercent;
 @private
 	CURL *curl;
 	char *stringBuffer;
 	char *headerBuffer;
 	NSString *grabURL;
-	HeaderParser *parser;
-    id <TinyGrabDelegate> delegate;
+	//HeaderParser *parser;
+    //id <TinyGrabDelegate> delegate;
 }
+
+@property(assign, readwrite)id<TinyGrabDelegate> delegate;
+@property(assign, readwrite)HeaderParser *parser;
+@property(assign, readwrite)int lastPercent;
 
 -(id)initWithDelegate:(id <TinyGrabDelegate>)aDelegate;
 -(NSDictionary *)uploadImage:(NSString *)filePathString email:(NSString *)emailString password:(NSString *)passwordString;
@@ -52,4 +56,4 @@ id <TinyGrabDelegate> currentDelegate;
 @end
 
 int uploadProgress(void *blah, double t, double d, double ultotal, double ulnow);
-size_t writefunc(void *ptr, size_t size, size_t nmemb, char *s);
+size_t writefunc(void *ptr, size_t size, size_t nmemb, void *s);

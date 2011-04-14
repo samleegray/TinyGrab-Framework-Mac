@@ -366,6 +366,7 @@
 				GCC_PREFIX_HEADER = "TinyGrab Framework/TinyGrab Framework-Prefix.pch";
 				INFOPLIST_FILE = "TinyGrab Framework/TinyGrab Framework-Info.plist";
 				INSTALL_PATH = "@executable_path/../Frameworks/";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
 			};
@@ -385,7 +386,7 @@
 				GCC_PREFIX_HEADER = "TinyGrab Framework/TinyGrab Framework-Prefix.pch";
 				INFOPLIST_FILE = "TinyGrab Framework/TinyGrab Framework-Info.plist";
 				INSTALL_PATH = "@executable_path/../Frameworks/";
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
 			};
