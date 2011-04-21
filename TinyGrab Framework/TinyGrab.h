@@ -38,8 +38,6 @@
 	char *stringBuffer;
 	char *headerBuffer;
 	NSString *grabURL;
-    NSMutableArray *queueArray;
-    NSThread *queueHandlingThread;
 }
 
 @property(assign, readwrite)id<TinyGrabDelegate> delegate;

@@ -59,7 +59,6 @@ size_t writefunc(void *ptr, size_t size, size_t nmemb, void *s)
 		curl_global_init(CURL_GLOBAL_ALL);
 		curl = curl_easy_init();
 		parser = [[HeaderParser alloc] init];
-        queueArray = [[NSMutableArray alloc] initWithCapacity:10];
 		
 		return(self);
 	}
@@ -77,7 +76,6 @@ size_t writefunc(void *ptr, size_t size, size_t nmemb, void *s)
         curl = curl_easy_init();
         parser = [[HeaderParser alloc] init];
         delegate = aDelegate;
-        queueArray = [[NSMutableArray alloc] initWithCapacity:10];
         
         return(self);
     }
@@ -104,7 +102,6 @@ size_t writefunc(void *ptr, size_t size, size_t nmemb, void *s)
 				 CURLFORM_COPYNAME, "User-Agent",
 				 CURLFORM_COPYCONTENTS, "TinyGrab Mac 1.0 API/2",
 				 CURLFORM_END);
-	
 	
 	curl_formadd(&formpost2,
 				 &lastptr2,
@@ -245,9 +242,6 @@ size_t writefunc(void *ptr, size_t size, size_t nmemb, void *s)
 	printf("release grabURL?\n");
 	[grabURL release];
 	printf("released it\n");
-    [queueHandlingThread cancel];
-    while ([queueHandlingThread isFinished] != YES) {}
-    [queueArray release];
 	[super dealloc];
 }
 
