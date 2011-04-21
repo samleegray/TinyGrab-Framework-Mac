@@ -59,6 +59,7 @@ size_t writefunc(void *ptr, size_t size, size_t nmemb, void *s)
 		curl_global_init(CURL_GLOBAL_ALL);
 		curl = curl_easy_init();
 		parser = [[HeaderParser alloc] init];
+        queueArray = [[NSMutableArray alloc] initWithCapacity:10];
 		
 		return(self);
 	}
@@ -76,6 +77,7 @@ size_t writefunc(void *ptr, size_t size, size_t nmemb, void *s)
         curl = curl_easy_init();
         parser = [[HeaderParser alloc] init];
         delegate = aDelegate;
+        queueArray = [[NSMutableArray alloc] initWithCapacity:10];
         
         return(self);
     }
@@ -189,7 +191,7 @@ size_t writefunc(void *ptr, size_t size, size_t nmemb, void *s)
 		curl_easy_setopt(curl, CURLOPT_HTTPPOST, formpost2);
 		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, writefunc);
 		curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *)self);
-		curl_easy_setopt(curl, CURLOPT_WRITEHEADER, &headerBuffer);
+		curl_easy_setopt(curl, CURLOPT_HEADER, 1L);
 		res2 = curl_easy_perform(curl);
 		
 		curl_formfree(formpost2);
@@ -243,6 +245,9 @@ size_t writefunc(void *ptr, size_t size, size_t nmemb, void *s)
 	printf("release grabURL?\n");
 	[grabURL release];
 	printf("released it\n");
+    [queueHandlingThread cancel];
+    while ([queueHandlingThread isFinished] != YES) {}
+    [queueArray release];
 	[super dealloc];
 }
 
