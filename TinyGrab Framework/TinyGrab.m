@@ -43,6 +43,20 @@ size_t writefunc(void *ptr, size_t size, size_t nmemb, void *s)
 	return size*nmemb;
 }
 
+size_t writefuncJSON(void *ptr, size_t size, size_t nmemb, void *s)
+{
+    TinyGrab *tgSelf = (TinyGrab *)s;
+    
+    NSMutableString *stringToParse = [[NSMutableString alloc] initWithUTF8String:(const char *)ptr];
+    int deleteableAmount = [stringToParse length] - nmemb;
+    [stringToParse deleteCharactersInRange:NSMakeRange([stringToParse length] - deleteableAmount, deleteableAmount)];
+
+    NSString *jsonStringToParse = [NSString stringWithString:stringToParse];
+    NSString *jsonRep = [jsonStringToParse JSONValue];
+    
+    return size*nmemb;
+}
+
 @implementation TinyGrab
 
 @synthesize delegate;
@@ -121,7 +135,66 @@ size_t writefunc(void *ptr, size_t size, size_t nmemb, void *s)
 				 CURLFORM_FILE, filePath,
 				 CURLFORM_END);
 	
-	printf("%s %s %s\n", email, password, filePath);
+	headerlist2 = curl_slist_append(headerlist2, buf2);
+	if(curl) 
+	{
+		curl_easy_setopt(curl, CURLOPT_URL, TINYGRAB_UPLOAD_URL);
+		curl_easy_setopt(curl, CURLOPT_HTTPPOST, formpost2);
+		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, writefunc);
+		curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *)self);
+        curl_easy_setopt(curl, CURLOPT_HEADER, 1L);
+		curl_easy_setopt(curl, CURLOPT_NOPROGRESS, 0L);
+		curl_easy_setopt(curl, CURLOPT_PROGRESSFUNCTION, uploadProgress);
+        curl_easy_setopt(curl, CURLOPT_PROGRESSDATA, (void *)self);
+		
+		res2 = curl_easy_perform(curl);
+		
+		curl_formfree(formpost2);
+		curl_slist_free_all (headerlist2);
+	}
+	
+	NSDictionary *headerDictionary = [NSDictionary dictionaryWithDictionary:[parser headerDictionary]];
+    
+	return(headerDictionary);
+}
+
+-(NSDictionary *)uploadNSImage:(NSImage *)image email:(NSString *)emailString password:(NSString *)passwordString
+{
+    [parser startNewParseSet];
+	CURLcode res2;
+	
+	const char *email = [emailString UTF8String];
+	const char *password = [self makeMD5:passwordString];
+	const char *filePath = [self convertNSImage:image];
+	
+	struct curl_httppost *formpost2=NULL;
+	struct curl_httppost *lastptr2=NULL;
+	struct curl_slist *headerlist2=NULL;
+	static const char buf2[] = "Content-Type: multipart/form-data";
+	
+	curl_formadd(&formpost2, 
+				 &lastptr2,
+				 CURLFORM_COPYNAME, "User-Agent",
+				 CURLFORM_COPYCONTENTS, "TinyGrab Mac 1.0 API/2",
+				 CURLFORM_END);
+	
+	curl_formadd(&formpost2,
+				 &lastptr2,
+				 CURLFORM_COPYNAME, "email",
+				 CURLFORM_COPYCONTENTS, email,
+				 CURLFORM_END);
+	
+	curl_formadd(&formpost2,
+				 &lastptr2,
+				 CURLFORM_COPYNAME, "passwordhash",
+				 CURLFORM_COPYCONTENTS, password,
+				 CURLFORM_END);
+	
+	curl_formadd(&formpost2,
+				 &lastptr2,
+				 CURLFORM_COPYNAME, "upload",
+				 CURLFORM_FILE, filePath,
+				 CURLFORM_END);
 	
 	headerlist2 = curl_slist_append(headerlist2, buf2);
 	if(curl) 
@@ -157,7 +230,6 @@ size_t writefunc(void *ptr, size_t size, size_t nmemb, void *s)
 	struct curl_httppost *formpost2=NULL;
 	struct curl_httppost *lastptr2=NULL;
 	struct curl_slist *headerlist2=NULL;
-	//static const char buf2[] = "Content-Type: multipart/form-data";
 	static const char *buf2 = "Content-Type: multipart/form-data";
 	
 	curl_formadd(&formpost2, 
@@ -179,8 +251,6 @@ size_t writefunc(void *ptr, size_t size, size_t nmemb, void *s)
 				 CURLFORM_COPYCONTENTS, password,
 				 CURLFORM_END);
 	
-	printf("%s %s\n", email, password);
-	
 	headerlist2 = curl_slist_append(headerlist2, buf2);
 	if(curl) 
 	{
@@ -189,6 +259,133 @@ size_t writefunc(void *ptr, size_t size, size_t nmemb, void *s)
 		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, writefunc);
 		curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *)self);
 		curl_easy_setopt(curl, CURLOPT_HEADER, 1L);
+        curl_easy_setopt(curl, CURLOPT_PROGRESSFUNCTION, NULL);
+		res2 = curl_easy_perform(curl);
+		
+		curl_formfree(formpost2);
+		curl_slist_free_all (headerlist2);
+	}
+	
+	NSDictionary *headerDictionary = [NSDictionary dictionaryWithDictionary:[parser headerDictionary]];
+	
+	return(headerDictionary);
+}
+
+-(NSDictionary *)updateGrab:(unsigned int)grabID title:(NSString *)newTitle description:(NSString *)newDescription email:(NSString *)emailString password:(NSString *)passwordString
+{
+    [parser startNewParseSet];
+	CURLcode res2;
+	
+	const char *email = [emailString UTF8String];
+	const char *password = [self makeMD5:passwordString];
+	
+	struct curl_httppost *formpost2=NULL;
+	struct curl_httppost *lastptr2=NULL;
+	struct curl_slist *headerlist2=NULL;
+	static const char *buf2 = "Content-Type: multipart/form-data";
+	
+	curl_formadd(&formpost2, 
+				 &lastptr2,
+				 CURLFORM_COPYNAME, "User-Agent",
+				 CURLFORM_COPYCONTENTS, "TinyGrab Mac 1.0 API/2",
+				 CURLFORM_END);
+	
+	
+	curl_formadd(&formpost2,
+				 &lastptr2,
+				 CURLFORM_COPYNAME, "email",
+				 CURLFORM_COPYCONTENTS, email,
+				 CURLFORM_END);
+	
+	curl_formadd(&formpost2,
+				 &lastptr2,
+				 CURLFORM_COPYNAME, "passwordhash",
+				 CURLFORM_COPYCONTENTS, password,
+				 CURLFORM_END);
+    
+    curl_formadd(&formpost2,
+                 &lastptr2,
+                 CURLFORM_COPYNAME, "title",
+                 CURLFORM_COPYCONTENTS, [newTitle UTF8String],
+                 CURLFORM_END);
+    
+    curl_formadd(&formpost2, 
+                 &lastptr2,
+                 CURLFORM_COPYNAME, "description",
+                 CURLFORM_COPYCONTENTS, [newDescription UTF8String],
+                 CURLFORM_END);
+    
+    NSString *idString = [NSString stringWithFormat:@"%d", grabID];
+    
+    curl_formadd(&formpost2, 
+                 &lastptr2,
+                 CURLFORM_COPYNAME, "grabid",
+                 CURLFORM_COPYCONTENTS, [idString UTF8String],
+                 CURLFORM_END);
+	
+	printf("%s %s\n", email, password);
+	
+	headerlist2 = curl_slist_append(headerlist2, buf2);
+	if(curl) 
+	{
+		curl_easy_setopt(curl, CURLOPT_URL, TINYGRAB_UPDATE_URL);
+		curl_easy_setopt(curl, CURLOPT_HTTPPOST, formpost2);
+		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, writefunc);
+		curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *)self);
+		curl_easy_setopt(curl, CURLOPT_HEADER, 1L);
+        curl_easy_setopt(curl, CURLOPT_PROGRESSFUNCTION, NULL);
+		res2 = curl_easy_perform(curl);
+		
+		curl_formfree(formpost2);
+		curl_slist_free_all (headerlist2);
+	}
+	
+	NSDictionary *headerDictionary = [NSDictionary dictionaryWithDictionary:[parser headerDictionary]];
+	
+	return(headerDictionary);
+}
+
+-(NSDictionary *)recentForUser:(NSString *)emailString password:(NSString *)passwordString
+{
+    [parser startNewParseSet];
+	CURLcode res2;
+	
+	const char *email = [emailString UTF8String];
+	const char *password = [self makeMD5:passwordString];
+	
+	struct curl_httppost *formpost2=NULL;
+	struct curl_httppost *lastptr2=NULL;
+	struct curl_slist *headerlist2=NULL;
+	static const char *buf2 = "Content-Type: multipart/form-data";
+	
+	curl_formadd(&formpost2, 
+				 &lastptr2,
+				 CURLFORM_COPYNAME, "User-Agent",
+				 CURLFORM_COPYCONTENTS, "TinyGrab Mac 1.0 API/2",
+				 CURLFORM_END);
+	
+	
+	curl_formadd(&formpost2,
+				 &lastptr2,
+				 CURLFORM_COPYNAME, "email",
+				 CURLFORM_COPYCONTENTS, email,
+				 CURLFORM_END);
+	
+	curl_formadd(&formpost2,
+				 &lastptr2,
+				 CURLFORM_COPYNAME, "passwordhash",
+				 CURLFORM_COPYCONTENTS, password,
+				 CURLFORM_END);
+	
+	headerlist2 = curl_slist_append(headerlist2, buf2);
+	if(curl) 
+	{
+		curl_easy_setopt(curl, CURLOPT_URL, TINYGRAB_RECENT_URL);
+		curl_easy_setopt(curl, CURLOPT_HTTPPOST, formpost2);
+		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, writefuncJSON);
+		curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *)self);
+		curl_easy_setopt(curl, CURLOPT_HEADER, 1L);
+        curl_easy_setopt(curl, CURLOPT_PROGRESSFUNCTION, NULL);
 		res2 = curl_easy_perform(curl);
 		
 		curl_formfree(formpost2);
@@ -204,6 +401,22 @@ size_t writefunc(void *ptr, size_t size, size_t nmemb, void *s)
 {
 	NSImage *image = [[NSImage alloc] initWithContentsOfFile:filePathString];
 	NSData *data = [[NSBitmapImageRep imageRepWithData:
+					 [image TIFFRepresentation]]
+					representationUsingType:NSPNGFileType 
+					properties:nil];
+	NSString *uniqueString = [[NSProcessInfo processInfo] globallyUniqueString];
+	NSMutableString *uniqueFilename = [NSMutableString stringWithFormat:@"%@.jpg", uniqueString];
+	NSString *filePath = [NSTemporaryDirectory() stringByAppendingPathComponent:uniqueFilename];
+	[data writeToURL:[NSURL fileURLWithPath:filePath] atomically:NO];
+    
+    [image release];
+	
+	return([filePath UTF8String]);
+}
+
+-(const char *)convertNSImage:(NSImage *)image
+{
+    NSData *data = [[NSBitmapImageRep imageRepWithData:
 					 [image TIFFRepresentation]]
 					representationUsingType:NSPNGFileType 
 					properties:nil];
@@ -239,9 +452,7 @@ size_t writefunc(void *ptr, size_t size, size_t nmemb, void *s)
 	curl_easy_cleanup(curl);
 	curl_global_cleanup();
 	[parser release];
-	printf("release grabURL?\n");
 	[grabURL release];
-	printf("released it\n");
 	[super dealloc];
 }
 

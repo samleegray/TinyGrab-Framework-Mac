@@ -21,9 +21,12 @@
 #include "HeaderParser.h"
 #import <CommonCrypto/CommonDigest.h>
 #import "TinyGrabDelegate.h"
+#import "JSON.h"
 
 #define TINYGRAB_UPLOAD_URL "http://tinygrab.com/api/v3.php?m=grab/upload"
 #define TINYGRAB_VERIFY_URL "http://tinygrab.com/api/v3.php?m=user/verify"
+#define TINYGRAB_UPDATE_URL "http://tinygrab.com/api/v3.php?m=grab/update"
+#define TINYGRAB_RECENT_URL "http://tinygrab.com/api/v3.php?m=user/recent.json"
 
 #define CLOUDIE_SUCCESS 0
 #define CLOUDIE_FAIL 1
@@ -46,12 +49,18 @@
 
 -(id)initWithDelegate:(id <TinyGrabDelegate>)aDelegate;
 -(NSDictionary *)uploadImage:(NSString *)filePathString email:(NSString *)emailString password:(NSString *)passwordString;
+-(NSDictionary *)uploadNSImage:(NSImage *)image email:(NSString *)emailString password:(NSString *)passwordString;
 -(NSDictionary *)validateUser:(NSString *)emailString password:(NSString *)passwordString;
+-(NSDictionary *)updateGrab:(unsigned int)grabID title:(NSString *)newTitle description:(NSString *)newDescription email:(NSString *)emailString password:(NSString *)passwordString;
+
+-(NSDictionary *)recentForUser:(NSString *)emailString password:(NSString *)passwordString;
 
 -(const char *)convertImage:(NSString *)filePathString;
+-(const char *)convertNSImage:(NSImage *)image;
 -(const char *)makeMD5:(NSString *)stringToMD5;
 
 @end
 
 int uploadProgress(void *blah, double t, double d, double ultotal, double ulnow);
 size_t writefunc(void *ptr, size_t size, size_t nmemb, void *s);
+size_t writefuncJSON(void *ptr, size_t size, size_t nmemb, void *s);
